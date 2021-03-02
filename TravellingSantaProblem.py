@@ -18,7 +18,7 @@ if __name__ == "__main__":
      
     inputfile = str(sys.argv[1])	
     
-    inputfile = "clusters/c_0037_10_20.csv"
+    #inputfile = "clusters/c_0037_10_20.csv"
     
     start_time = time.time() 
     
