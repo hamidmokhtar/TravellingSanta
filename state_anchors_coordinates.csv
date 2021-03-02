@@ -1,0 +1,34 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Feb 23 01:30:56 2021
+
+@author: Zahra
+"""
+
+import pandas as pd
+import os,csv
+ 
+ct = pd.read_csv("cities.csv")
+rd = pd.read_csv("_SantaCircuitPath.csv",names=['id'])
+
+rows_list=[]
+
+for j in range(len(rd)): 
+    ctid= int(rd['id'][j])
+    dict1 = {}
+    dict1.update( X=ct["X"][ctid] , 
+                  Y=ct["Y"][ctid] )
+    
+    rows_list.append(dict1)        
+    
+result = [list(rows_list[i].values()) for i in range(len(rows_list))]
+    
+outdir = './clusterTSP'
+filename = '_path_coordinates.csv'
+fullname = os.path.join(outdir, filename)  
+
+file = open(fullname, 'a+', newline ='') 
+with file:     
+    write = csv.writer(file)  
+    write.writerows(result) 
+    
